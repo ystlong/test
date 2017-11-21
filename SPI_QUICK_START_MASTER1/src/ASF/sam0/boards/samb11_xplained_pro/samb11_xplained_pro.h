@@ -292,15 +292,15 @@ void system_board_init(void);
 ///** \name Embedded debugger CDC Gateway USART interface definitions
  //* @{
  //*/
-#define EDBG_CDC_MODULE        	 UART0
-#define EDBG_CDC_PIN_PAD0        PIN_LP_GPIO_2
-#define EDBG_CDC_PIN_PAD1        PIN_LP_GPIO_3
-#define EDBG_CDC_PIN_PAD2        PIN_LP_GPIO_4
-#define EDBG_CDC_PIN_PAD3        PIN_LP_GPIO_5
-#define EDBG_CDC_MUX_PAD0        MUX_LP_GPIO_2_UART0_RXD
-#define EDBG_CDC_MUX_PAD1        MUX_LP_GPIO_3_UART0_TXD
-#define EDBG_CDC_MUX_PAD2        MUX_LP_GPIO_4_UART0_CTS
-#define EDBG_CDC_MUX_PAD3        MUX_LP_GPIO_5_UART0_RTS
+//#define EDBG_CDC_MODULE        	 UART0
+//#define EDBG_CDC_PIN_PAD0        PIN_LP_GPIO_2
+//#define EDBG_CDC_PIN_PAD1        PIN_LP_GPIO_3
+//#define EDBG_CDC_PIN_PAD2        PIN_LP_GPIO_4
+//#define EDBG_CDC_PIN_PAD3        PIN_LP_GPIO_5
+//#define EDBG_CDC_MUX_PAD0        MUX_LP_GPIO_2_UART0_RXD
+//#define EDBG_CDC_MUX_PAD1        MUX_LP_GPIO_3_UART0_TXD
+//#define EDBG_CDC_MUX_PAD2        MUX_LP_GPIO_4_UART0_CTS
+//#define EDBG_CDC_MUX_PAD3        MUX_LP_GPIO_5_UART0_RTS
 /** @} */
 
 /** @} */

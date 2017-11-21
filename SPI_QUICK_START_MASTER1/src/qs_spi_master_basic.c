@@ -44,9 +44,6 @@
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #include <asf.h>
-#include "at_ble_api.h"
-#include "ble_manager.h"
-#include "ble_utils.h"
 
 static uint8_t write_buffer_ADS1292R_wakeup[1]			= {0x02};
 static uint8_t write_buffer_ADS1292R_standby[1]			= {0x04};
@@ -409,11 +406,6 @@ static void configure_gpio_callbacks(void)
 	gpio_enable_callback(EXT1_PIN_ADSDRDY);
 }
 
-void send_send();
-int nut_bord_init(void);
-
-extern uint8_t already_send;
-
 void main(void)
 {
 
@@ -424,48 +416,34 @@ void main(void)
 	system_clock_config(CLOCK_RESOURCE_XO_26_MHZ, CLOCK_FREQ_26_MHZ);
 	init_led();
 	init_start();//For power up
- 	init_ADS1292R_reset();
- 	//init_FXLS8471Q();		
- 	init_sd();	
- 	init_ADS1292R_config();
- 	configure_gpio_callbacks();
-
-	//nut_bord_init();
-	
+	init_ADS1292R_reset();
+//	init_FXLS8471Q();		
+	init_sd();	
+	init_ADS1292R_config();
+	configure_gpio_callbacks();
+		
 	gpio_pin_set_output_level(LED_G_PIN, LED_ACTIVE);//green
-	//for(i = 0; i < 0xffff; i++) {
-	//}
-	//
+	for(i = 0; i < 0xffff; i++) {
+	}
 	
 	while (true) {		
-		//ble_event_task(BLE_EVENT_TIMEOUT);
-		//void check_wait_conn_ok();
-		//check_wait_conn_ok();
-		//send_send();
-
 		if (ADS1292R_index >= 506)
 		{
-			send_send();
-			//char databuf[] = {'1', '2', '3', '4', '\0'};
-			//uint16_t datalen = 4;
-			//at_ble_status_t nut_serv_ecg_send_data(uint8_t *databuf, uint16_t datalen);
-			//nut_serv_ecg_send_data((uint8_t *)databuf, datalen);
-
-			// gpio_pin_set_output_level(LED_R_PIN, LED_ACTIVE);	
-			// ADS1292R_index = 7;
-			// do 
-			// {
-			// 	rep_1292R++;
-			// } while ((sd_write_sector(&spi_master_instance_SD, &slave_SD, SD_address, SD_write_block_ADS1292R) == STATUS_ERR_BAD_DATA) && rep_1292R < 5);
-			// rep_1292R = 0;
-			// for(i = 0; i < 0xff; i++) {
-			// }
-			// SD_address_index = SD_address_index + 1;
-			// SD_address[0] = SD_address_index >> 24;
-			// SD_address[1] = SD_address_index >> 16;
-			// SD_address[2] = SD_address_index >> 8;
-			// SD_address[3] = SD_address_index;
-			// gpio_pin_set_output_level(LED_R_PIN, LED_INACTIVE);					
+			gpio_pin_set_output_level(LED_R_PIN, LED_ACTIVE);	
+			ADS1292R_index = 7;
+			do 
+			{
+				rep_1292R++;
+			} while ((sd_write_sector(&spi_master_instance_SD, &slave_SD, SD_address, SD_write_block_ADS1292R) == STATUS_ERR_BAD_DATA) && rep_1292R < 5);
+			rep_1292R = 0;
+			for(i = 0; i < 0xff; i++) {
+			}
+			SD_address_index = SD_address_index + 1;
+			SD_address[0] = SD_address_index >> 24;
+			SD_address[1] = SD_address_index >> 16;
+			SD_address[2] = SD_address_index >> 8;
+			SD_address[3] = SD_address_index;
+			gpio_pin_set_output_level(LED_R_PIN, LED_INACTIVE);					
 		}
 /*		if(FXLS8471Q_index >= 506)
 		{
